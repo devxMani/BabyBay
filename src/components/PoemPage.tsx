@@ -1,15 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { poems } from '@/data/poems';
 import Navigation from './Navigation';
-import textureVintage from '@/assets/texture-vintage-1.jpg';
-import textureRomantic from '@/assets/texture-romantic.jpg';
-import textureMystical from '@/assets/texture-mystical.jpg';
-import textureMoonlit from '@/assets/texture-moonlit.jpg';
-
-const textures = [textureVintage, textureRomantic, textureMystical, textureMoonlit];
 
 const PoemPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,10 +13,10 @@ const PoemPage = () => {
   
   if (!poem) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Poem not found</h1>
-          <Button onClick={() => navigate('/')}>
+          <h1 className="text-2xl font-bold mb-4 text-gray-800">Poem not found</h1>
+          <Button onClick={() => navigate('/')} className="bg-gray-800 hover:bg-gray-700 text-white">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to all poems
           </Button>
@@ -31,67 +25,73 @@ const PoemPage = () => {
     );
   }
 
-  const backgroundImage = textures[poem.textureIndex % textures.length];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      <main className="pt-20 pb-12 px-4">
+      <main className="pt-24 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
           {/* Back button */}
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 nav-button flex items-center"
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            <span style={{ fontFamily: "'Indie Flower', cursive" }}>Back to all poems</span>
-          </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="mb-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to all poems
+            </Button>
+          </motion.div>
 
-          {/* Poem card with glassmorphism */}
-          <div 
-            className="glass rounded-2xl p-8 sm:p-12 animate-fade-in max-w-3xl mx-auto"
-            style={{
-              backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15)), url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundBlendMode: 'overlay',
-              fontFamily: "'Indie Flower', cursive"
-            }}
+          {/* Poem card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-white rounded-2xl shadow-lg p-8 sm:p-12 max-w-3xl mx-auto border border-gray-100"
           >
             {/* Poem header */}
-            <div className="text-center mb-8 border-b border-border/30 pb-6">
-              <p className="text-sm text-muted-foreground mb-2 font-medium">
+            <div className="text-center mb-8 border-b border-gray-200 pb-6">
+              <p className="text-sm text-gray-500 mb-2 font-medium">
                 {poem.date}
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-serif">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: "'Crimson Text', serif" }}>
                 {poem.title}
               </h1>
             </div>
 
             {/* Poem content */}
-            <div className="prose prose-lg max-w-none text-card-foreground">
+            <div className="prose prose-lg max-w-none text-gray-700">
               {poem.content.split('\n').map((line, index) => (
                 <p 
                   key={index} 
-                  className={`${line.trim() === '' ? 'mb-6' : 'mb-3'} leading-relaxed font-serif text-lg`}
+                  className={`${line.trim() === '' ? 'mb-6' : 'mb-3'} leading-relaxed text-lg`}
                   style={{ 
                     textAlign: line.trim() === '' ? 'center' : 'left',
-                    fontStyle: line.trim() === '' ? 'italic' : 'normal'
+                    fontStyle: line.trim() === '' ? 'italic' : 'normal',
+                    fontFamily: "'Inter', sans-serif"
                   }}
                 >
                   {line.trim() || '\u00A0'}
                 </p>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Create your own poetry page button */}
-          <div className="text-center mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-12"
+          >
             <Button 
               variant="outline" 
-              className="bg-background/80 hover:bg-background border-border/50 backdrop-blur-sm"
+              className="bg-white hover:bg-gray-50 border-gray-300 text-gray-700 hover:text-gray-800"
             >
               <svg
                 width="16"
@@ -110,11 +110,16 @@ const PoemPage = () => {
               </svg>
               Create Your Own Poetry Page
             </Button>
-          </div>
+          </motion.div>
 
           {/* Footer */}
-          <footer className="text-center mt-12 pt-8 border-t border-border/30">
-            <div className="butterfly-icon inline-block mb-4">
+          <motion.footer
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-center mt-12 pt-8 border-t border-gray-200"
+          >
+            <div className="inline-block mb-4">
               <svg
                 width="24"
                 height="24"
@@ -124,17 +129,17 @@ const PoemPage = () => {
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-primary"
+                className="text-gray-600"
               >
                 <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
                 <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
                 <path d="M15 13a2 2 0 0 1-3 0 2 2 0 0 1-3 0" />
               </svg>
             </div>
-            <p className="text-sm text-muted-foreground">
-              by <span className="underline cursor-pointer hover:text-primary transition-colors">tulip</span> <span className="underline cursor-pointer hover:text-primary transition-colors">donate me</span>
+            <p className="text-sm text-gray-500">
+              by <span className="underline cursor-pointer hover:text-gray-700 transition-colors">tulip</span> <span className="underline cursor-pointer hover:text-gray-700 transition-colors">donate me</span>
             </p>
-          </footer>
+          </motion.footer>
         </div>
       </main>
     </div>

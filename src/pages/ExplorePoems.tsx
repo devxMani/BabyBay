@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import { GiButterfly } from 'react-icons/gi';
 
-// Sample explore poems data matching dark theme
+// Sample explore poems data matching light theme
 const explorePoems = [
   {
     id: 'the-one-my-heart-knows',
@@ -51,10 +51,10 @@ const ExplorePoems = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      <main className="pt-20 pb-12 px-4">
+      <main className="pt-24 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
           {/* Page title */}
           <motion.div
@@ -64,8 +64,8 @@ const ExplorePoems = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 
-              className="text-3xl font-normal text-white mb-8"
-              style={{ fontFamily: 'Inter, sans-serif' }}
+              className="text-3xl font-normal text-gray-800 mb-8"
+              style={{ fontFamily: "'Crimson Text', serif" }}
             >
               Explore Poems
             </h1>
@@ -89,25 +89,25 @@ const ExplorePoems = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handlePoemClick(poem.id)}
               >
-                <div className="rounded-2xl p-6 h-20 flex items-center justify-between relative overflow-hidden backdrop-blur-sm bg-white/10 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div className="rounded-2xl p-6 h-20 flex items-center justify-between relative overflow-hidden bg-white border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300">
                   <div className="flex items-center flex-1">
                     <h3 
-                      className="text-lg font-normal text-white group-hover:text-white/90 transition-colors duration-200 mr-4"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      className="text-lg font-medium text-gray-800 group-hover:text-gray-900 transition-colors duration-200 mr-4"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {poem.title}
                     </h3>
                     <span 
-                      className="text-sm text-white/60"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      className="text-sm text-gray-500"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       by {poem.author}
                     </span>
                   </div>
                   
                   <div 
-                    className="text-sm text-white/80 font-normal"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
+                    className="text-sm text-gray-600 font-normal"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {poem.date}
                   </div>
@@ -125,12 +125,12 @@ const ExplorePoems = () => {
           >
             <motion.button 
               onClick={() => navigate('/signin')}
-              className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl font-normal text-white border border-white/20 hover:bg-white/15 transition-all duration-300 flex items-center space-x-2 mx-auto"
-              style={{ fontFamily: 'Inter, sans-serif' }}
+              className="bg-white px-6 py-3 rounded-2xl font-normal text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 flex items-center space-x-2 mx-auto shadow-sm"
+              style={{ fontFamily: "'Inter', sans-serif" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <GiButterfly size={18} className="text-white" />
+              <GiButterfly size={18} className="text-gray-700" />
               <span>Create Your Own Poetry Page</span>
             </motion.button>
           </motion.div>
