@@ -1,303 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-@import '@fontsource/dancing-script/400.css';
-@import '@fontsource/dancing-script/500.css';
-@import '@fontsource/dancing-script/600.css';
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/crimson-text/400.css';
-@import '@fontsource/crimson-text/600.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Indie+Flower&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Dark theme with glassmorphism */
 body {
-  font-family: 'Dancing Script', 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #2c3e50;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Inter', sans-serif;
+  background: #1a1a1a;
+  color: #ffffff;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-body.dark {
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  color: #ecf0f1;
-}
-
+/* Glassmorphism base styles */
 .glass {
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .glass:hover {
-  background: rgba(255,255,255,0.25);
-  box-shadow: 0 15px 45px 0 rgba(31,38,135,0.5);
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
-body.dark .glass {
-  background: rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #ecf0f1;
+/* Navigation glass effect */
+.nav-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
-body.dark .glass:hover {
-  background: rgba(0,0,0,0.35);
-  box-shadow: 0 15px 45px 0 rgba(0,0,0,0.3);
+.nav-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
 }
 
-/* Enhanced glassmorphism for poetry blocks */
-.poetry-block {
-  background: rgba(255,255,255,0.2);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.3);
+/* Poem card glassmorphism */
+.poem-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.poem-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.poem-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Background textures with blur effect */
+.texture-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(0.5px);
+  opacity: 0.6;
+}
+
+/* Visitor counter glass */
+.visitor-glass {
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Button glassmorphism */
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  color: white;
   transition: all 0.3s ease;
 }
 
-.poetry-block:hover {
-  background: rgba(255,255,255,0.3);
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(31,38,135,0.45);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-body.dark .poetry-block {
-  background: rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.1);
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-body.dark .poetry-block:hover {
-  background: rgba(0,0,0,0.4);
-}
-
-/* Poetry-inspired design system with literary aesthetics */
-
-@layer base {
-  :root {
-    /* Light theme - glass design */
-    --background: 220 20% 95%;
-    --foreground: 220 15% 20%;
-    
-    /* Glass card backgrounds */
-    --card: 220 20% 98%;
-    --card-foreground: 220 15% 20%;
-    
-    --popover: 42 15% 97%;
-    --popover-foreground: 25 25% 15%;
-    
-    /* Glass primary - elegant dark */
-    --primary: 220 25% 25%;
-    --primary-foreground: 220 20% 95%;
-    
-    /* Soft secondary tones */
-    --secondary: 42 25% 88%;
-    --secondary-foreground: 25 25% 15%;
-    
-    /* Muted text for dates and metadata */
-    --muted: 42 15% 85%;
-    --muted-foreground: 25 15% 45%;
-    
-    /* Accent - warm golden tone */
-    --accent: 45 65% 75%;
-    --accent-foreground: 25 35% 25%;
-    
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 42 20% 95%;
-    
-    /* Subtle borders */
-    --border: 42 20% 85%;
-    --input: 42 20% 85%;
-    --ring: 25 35% 25%;
-    
-    /* Texture overlays */
-    --texture-overlay: 42 10% 90%;
-    --texture-shadow: 25 15% 0%;
-    
-    /* Glass overlays and effects */
-    --glass-bg: hsla(220, 20%, 98%, 0.6);
-    --glass-border: hsla(220, 15%, 60%, 0.2);
-    --glass-shadow: 0 8px 32px hsla(220, 15%, 0%, 0.05);
-    --glass-backdrop: blur(20px);
-    
-    /* Light glass gradients */
-    --gradient-glass: linear-gradient(135deg, hsla(220, 20%, 98%, 0.8), hsla(220, 15%, 95%, 0.6));
-    --gradient-glass-hover: linear-gradient(135deg, hsla(220, 20%, 98%, 0.9), hsla(220, 15%, 95%, 0.7));
-    
-    /* Literary shadows */
-    --shadow-soft: 0 4px 12px hsl(var(--texture-shadow) / 0.08);
-    --shadow-poetry: 0 8px 25px hsl(var(--texture-shadow) / 0.12);
-    
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .dark {
-    /* Dark theme - cozy reading room */
-    --background: 220 20% 6%;
-    --foreground: 42 25% 88%;
-    
-    --card: 220 15% 12%;
-    --card-foreground: 42 25% 88%;
-    
-    --popover: 220 15% 8%;
-    --popover-foreground: 42 25% 85%;
-    
-    /* Warm primary for dark mode */
-    --primary: 42 35% 75%;
-    --primary-foreground: 220 15% 8%;
-    
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 42 25% 85%;
-    
-    --muted: 220 15% 15%;
-    --muted-foreground: 42 15% 55%;
-    
-    --accent: 45 45% 65%;
-    --accent-foreground: 220 15% 8%;
-    
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 42 25% 85%;
-    
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
-    --ring: 42 35% 75%;
-    
-    /* Dark glass overlays and effects */
-    --glass-bg: hsla(220, 15%, 10%, 0.7);
-    --glass-border: hsla(220, 20%, 40%, 0.3);
-    --glass-shadow: 0 8px 32px hsla(220, 15%, 0%, 0.3);
-    --glass-backdrop: blur(20px);
-    
-    /* Dark glass gradients */
-    --gradient-glass: linear-gradient(135deg, hsla(220, 15%, 12%, 0.8), hsla(220, 10%, 8%, 0.6));
-    --gradient-glass-hover: linear-gradient(135deg, hsla(220, 15%, 15%, 0.9), hsla(220, 10%, 10%, 0.7));
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-serif;
-  }
+.butterfly-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-@layer components {
-  /* Glass card component */
-  .poetry-card {
-    background: var(--gradient-glass);
-    backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    @apply relative overflow-hidden rounded-2xl;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form inputs glassmorphism */
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .poem-card {
+    margin: 0 16px;
   }
   
-  .poetry-card:hover {
-    background: var(--gradient-glass-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 48px hsla(220, 15%, 0%, 0.1);
-  }
-  
-  .poetry-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 30% 30%, hsla(220, 30%, 70%, 0.1) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  /* Glass navigation button */
-  .nav-button {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: var(--glass-backdrop);
-    box-shadow: var(--glass-shadow);
-    @apply p-2 rounded-full transition-all duration-200 hover:scale-105;
-  }
-  
-  .nav-button:hover {
-    background: var(--gradient-glass-hover);
-  }
-  
-  /* Poetry title styling */
-  .poetry-title {
-    @apply text-base sm:text-lg font-medium text-card-foreground;
-    font-family: 'Crimson Text', serif;
-    letter-spacing: 0.01em;
-  }
-  
-  /* Poetry date styling */
-  .poetry-date {
-    @apply text-xs sm:text-sm text-muted-foreground font-normal;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.02em;
-  }
-  
-  /* Butterfly icon animation */
-  .butterfly-icon {
-    @apply transition-all duration-300 hover:scale-110;
-    filter: drop-shadow(0 2px 4px hsl(var(--texture-shadow) / 0.1));
-  }
-  
-  .butterfly-icon:hover {
-    animation: flutter 0.6s ease-in-out;
-  }
-  
-  @keyframes flutter {
-    0%, 100% { transform: scale(1.1) rotate(0deg); }
-    25% { transform: scale(1.15) rotate(-2deg); }
-    75% { transform: scale(1.15) rotate(2deg); }
-  }
-  
-  /* Texture backgrounds for poetry cards */
-  .texture-vintage {
-    background-image: 
-      radial-gradient(circle at 20% 30%, hsla(42, 25%, 88%, 0.3) 0%, transparent 25%),
-      radial-gradient(circle at 80% 70%, hsla(35, 20%, 92%, 0.2) 0%, transparent 25%),
-      linear-gradient(135deg, transparent 0%, hsla(40, 15%, 90%, 0.1) 100%);
-  }
-  
-  .texture-paper {
-    background-image:
-      repeating-linear-gradient(45deg, transparent, transparent 2px, hsla(42, 10%, 85%, 0.03) 2px, hsla(42, 10%, 85%, 0.03) 4px),
-      radial-gradient(circle at 25% 25%, hsla(42, 20%, 90%, 0.1) 0%, transparent 50%);
+  .glass {
+    border-radius: 16px;
   }
 }
