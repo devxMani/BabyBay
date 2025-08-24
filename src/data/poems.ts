@@ -64,20 +64,20 @@ And love needs no explanation.`
     title: 'Her',
     date: '27 Jun 2024',
     textureIndex: 2,
-    content: `She carries universes in her eyes,
-Galaxies that spiral with untold stories.
-When she speaks, flowers listen,
-And the wind pauses to hear her voice.
+    content: `I stared into the mirror, and something stared back,
+Sinister and dangerous, like a 'Lucifer' attack.
+Menacing and psychopathic, a 'blood-obsessed' freak,
+A liar, a witch, 'sinful disaster' so bleak.
 
-Her laughter is morning light
-Breaking through winter's longest night.
-In her presence, time forgets its hurry,
-And even shadows learn to dance.
+It smirked at me through the glass so clear,
+'It was us all along,' it whispered near.
+Each word shook me to my core,
+But I didn't look away, not anymore.
 
-She is poetry in human form,
-A song the earth has been waiting to hear.
-In loving her, I've learned
-That some things are too beautiful for words.`
+All this time, I fought and searched for the villain,
+But the wicked monster was within me, chilling.
+The villain I feared, so cruel and strong,
+Was inside me, hidden all along.`
   },
   {
     id: 'my-fictional-hero',

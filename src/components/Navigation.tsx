@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { IoHome, IoSearch, IoLogIn, IoHelpCircle } from 'react-icons/io5';
 import { GiButterfly } from 'react-icons/gi';
-import ThemeToggle from './ThemeToggle';
+import { IoHome, IoSearch, IoLogIn, IoHelpCircle } from 'react-icons/io5';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -11,62 +11,73 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 p-4">
-      <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <motion.div 
-          className="flex items-center cursor-pointer"
+          className="flex items-center cursor-pointer nav-glass p-2"
           onClick={() => navigate('/')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <GiButterfly size={28} className="text-white mr-2" />
+          <GiButterfly size={24} className="text-white butterfly-float" />
         </motion.div>
 
         {/* Center Navigation */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <motion.button
             onClick={() => navigate('/')}
-            className={`p-2 rounded-lg transition-colors duration-200 ${
-              location.pathname === '/' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+            className={`nav-glass p-3 transition-all duration-200 ${
+              location.pathname === '/' ? 'bg-white/20' : ''
             }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            title="Home"
           >
-            <IoHome size={18} />
+            <IoHome size={18} className="text-white" />
           </motion.button>
           
           <motion.button
             onClick={() => navigate('/explore')}
-            className={`p-2 rounded-lg transition-colors duration-200 ${
-              location.pathname === '/explore' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+            className={`nav-glass p-3 transition-all duration-200 ${
+              location.pathname === '/explore' ? 'bg-white/20' : ''
             }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            title="Explore Poems"
           >
-            <IoSearch size={18} />
+            <IoSearch size={18} className="text-white" />
           </motion.button>
 
           <motion.button
-            className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="nav-glass p-3 transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            title="Help"
           >
-            <IoHelpCircle size={18} />
+            <IoHelpCircle size={18} className="text-white" />
           </motion.button>
 
-          <ThemeToggle />
+          <motion.button
+            className="nav-glass p-3 transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            title="Toggle Theme"
+          >
+            <MdDarkMode size={18} className="text-white" />
+          </motion.button>
         </div>
 
         {/* Login */}
         <motion.button
           onClick={() => navigate('/signin')}
-          className={`p-2 rounded-lg transition-colors duration-200 ${
-            location.pathname === '/signin' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+          className={`nav-glass p-3 transition-all duration-200 ${
+            location.pathname === '/signin' ? 'bg-white/20' : ''
           }`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          title="Sign In"
         >
-          <IoLogIn size={18} />
+          <IoLogIn size={18} className="text-white" />
         </motion.button>
       </div>
     </nav>
