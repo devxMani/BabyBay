@@ -14,8 +14,8 @@ const VisitorCounter = () => {
 
   return (
     <div className="text-center mb-8">
-      <p className="text-sm text-muted-foreground font-medium">
-        Visitors: {visitors.toLocaleString()}
+      <p className="text-xs sm:text-sm text-muted-foreground font-normal tracking-wide">
+        Visitors: <span className="font-medium">{visitors.toLocaleString()}</span>
       </p>
     </div>
   );

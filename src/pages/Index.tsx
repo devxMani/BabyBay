@@ -22,14 +22,14 @@ const Index = () => {
           <VisitorCounter />
 
           {/* Page title */}
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-2 font-serif">
+          <div className="text-center mb-10">
+            <h1 className="text-2xl sm:text-3xl font-medium text-primary mb-2 font-serif tracking-wide">
               My Poems
             </h1>
           </div>
 
           {/* Poetry cards */}
-          <div className="space-y-4 animate-fade-in">
+          <div className="space-y-3 animate-fade-in max-w-3xl mx-auto">
             {poems.map((poem, index) => (
               <div 
                 key={poem.id}

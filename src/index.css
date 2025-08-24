@@ -76,11 +76,11 @@
 
   .dark {
     /* Dark theme - cozy reading room */
-    --background: 220 15% 8%;
-    --foreground: 42 25% 85%;
+    --background: 220 20% 6%;
+    --foreground: 42 25% 88%;
     
-    --card: 220 15% 10%;
-    --card-foreground: 42 25% 85%;
+    --card: 220 15% 12%;
+    --card-foreground: 42 25% 88%;
     
     --popover: 220 15% 8%;
     --popover-foreground: 42 25% 85%;
@@ -136,15 +136,15 @@
 @layer components {
   /* Poetry card component */
   .poetry-card {
-    @apply relative overflow-hidden rounded-xl bg-card border border-border/50;
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/30;
     background: var(--gradient-vintage);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 2px 8px hsl(var(--texture-shadow) / 0.08), 0 1px 3px hsl(var(--texture-shadow) / 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .poetry-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-poetry);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px hsl(var(--texture-shadow) / 0.12), 0 2px 6px hsl(var(--texture-shadow) / 0.15);
   }
   
   .poetry-card::before {
@@ -154,21 +154,24 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 40%, hsla(42, 20%, 95%, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, hsla(35, 15%, 90%, 0.1) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 20% 30%, hsla(42, 20%, 95%, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, hsla(35, 15%, 90%, 0.08) 0%, transparent 60%);
     pointer-events: none;
+    z-index: 1;
   }
   
   /* Poetry title styling */
   .poetry-title {
-    @apply text-lg font-semibold text-card-foreground mb-1;
+    @apply text-base sm:text-lg font-medium text-card-foreground;
     font-family: 'Crimson Text', serif;
+    letter-spacing: 0.01em;
   }
   
   /* Poetry date styling */
   .poetry-date {
-    @apply text-sm text-muted-foreground font-medium;
+    @apply text-xs sm:text-sm text-muted-foreground font-normal;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
   }
   
   /* Navigation button */
