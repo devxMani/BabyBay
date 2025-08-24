@@ -8,20 +8,20 @@
 
 @layer base {
   :root {
-    /* Light theme - warm, paper-like */
-    --background: 42 15% 97%;
-    --foreground: 25 25% 15%;
+    /* Light theme - glass design */
+    --background: 220 20% 95%;
+    --foreground: 220 15% 20%;
     
-    /* Card backgrounds with vintage paper feel */
-    --card: 42 20% 95%;
-    --card-foreground: 25 25% 15%;
+    /* Glass card backgrounds */
+    --card: 220 20% 98%;
+    --card-foreground: 220 15% 20%;
     
     --popover: 42 15% 97%;
     --popover-foreground: 25 25% 15%;
     
-    /* Literary primary - deep sepia brown */
-    --primary: 25 35% 25%;
-    --primary-foreground: 42 20% 95%;
+    /* Glass primary - elegant dark */
+    --primary: 220 25% 25%;
+    --primary-foreground: 220 20% 95%;
     
     /* Soft secondary tones */
     --secondary: 42 25% 88%;
@@ -47,9 +47,15 @@
     --texture-overlay: 42 10% 90%;
     --texture-shadow: 25 15% 0%;
     
-    /* Poetry card gradients */
-    --gradient-vintage: linear-gradient(135deg, hsl(42, 25%, 92%), hsl(35, 20%, 88%));
-    --gradient-paper: linear-gradient(180deg, hsl(42, 20%, 95%), hsl(40, 15%, 90%));
+    /* Glass overlays and effects */
+    --glass-bg: hsla(220, 20%, 98%, 0.6);
+    --glass-border: hsla(220, 15%, 60%, 0.2);
+    --glass-shadow: 0 8px 32px hsla(220, 15%, 0%, 0.05);
+    --glass-backdrop: blur(20px);
+    
+    /* Light glass gradients */
+    --gradient-glass: linear-gradient(135deg, hsla(220, 20%, 98%, 0.8), hsla(220, 15%, 95%, 0.6));
+    --gradient-glass-hover: linear-gradient(135deg, hsla(220, 20%, 98%, 0.9), hsla(220, 15%, 95%, 0.7));
     
     /* Literary shadows */
     --shadow-soft: 0 4px 12px hsl(var(--texture-shadow) / 0.08);
@@ -105,13 +111,15 @@
     --input: 220 15% 15%;
     --ring: 42 35% 75%;
     
-    /* Dark texture overlays */
-    --texture-overlay: 220 10% 12%;
-    --texture-shadow: 0 0% 0%;
+    /* Dark glass overlays and effects */
+    --glass-bg: hsla(220, 15%, 10%, 0.7);
+    --glass-border: hsla(220, 20%, 40%, 0.3);
+    --glass-shadow: 0 8px 32px hsla(220, 15%, 0%, 0.3);
+    --glass-backdrop: blur(20px);
     
-    /* Dark mode gradients */
-    --gradient-vintage: linear-gradient(135deg, hsl(220, 15%, 12%), hsl(220, 10%, 15%));
-    --gradient-paper: linear-gradient(180deg, hsl(220, 15%, 10%), hsl(220, 12%, 8%));
+    /* Dark glass gradients */
+    --gradient-glass: linear-gradient(135deg, hsla(220, 15%, 12%, 0.8), hsla(220, 10%, 8%, 0.6));
+    --gradient-glass-hover: linear-gradient(135deg, hsla(220, 15%, 15%, 0.9), hsla(220, 10%, 10%, 0.7));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -134,17 +142,20 @@
 }
 
 @layer components {
-  /* Poetry card component */
+  /* Glass card component */
   .poetry-card {
-    @apply relative overflow-hidden rounded-2xl bg-card border border-border/30;
-    background: var(--gradient-vintage);
-    box-shadow: 0 2px 8px hsl(var(--texture-shadow) / 0.08), 0 1px 3px hsl(var(--texture-shadow) / 0.1);
+    background: var(--gradient-glass);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    @apply relative overflow-hidden rounded-2xl;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .poetry-card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px hsl(var(--texture-shadow) / 0.12), 0 2px 6px hsl(var(--texture-shadow) / 0.15);
+    background: var(--gradient-glass-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px hsla(220, 15%, 0%, 0.1);
   }
   
   .poetry-card::before {
@@ -154,10 +165,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at 20% 30%, hsla(42, 20%, 95%, 0.1) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, hsla(35, 15%, 90%, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 30%, hsla(220, 30%, 70%, 0.1) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
+  }
+  
+  /* Glass navigation button */
+  .nav-button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    box-shadow: var(--glass-shadow);
+    @apply p-2 rounded-full transition-all duration-200 hover:scale-105;
+  }
+  
+  .nav-button:hover {
+    background: var(--gradient-glass-hover);
   }
   
   /* Poetry title styling */
@@ -172,13 +195,6 @@
     @apply text-xs sm:text-sm text-muted-foreground font-normal;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.02em;
-  }
-  
-  /* Navigation button */
-  .nav-button {
-    @apply p-2 rounded-full bg-background/80 hover:bg-background border border-border/50;
-    @apply transition-all duration-200 hover:scale-105;
-    backdrop-filter: blur(8px);
   }
   
   /* Butterfly icon animation */

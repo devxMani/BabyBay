@@ -24,7 +24,7 @@ const Index = () => {
           {/* Page title */}
           <div className="text-center mb-10">
             <h1 className="text-2xl sm:text-3xl font-medium text-primary mb-2 font-serif tracking-wide">
-              My Poems
+              BabyBay
             </h1>
           </div>
 
@@ -50,7 +50,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Button 
               variant="outline" 
-              className="bg-background/80 hover:bg-background border-border/50 backdrop-blur-sm"
+              className="nav-button"
             >
               <svg
                 width="16"

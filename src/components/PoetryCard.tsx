@@ -23,18 +23,8 @@ const PoetryCard: React.FC<PoetryCardProps> = ({
 
   return (
     <Card 
-      className="poetry-card cursor-pointer group overflow-hidden h-20 sm:h-24"
+      className="poetry-card cursor-pointer group h-20 sm:h-24"
       onClick={onClick}
-      style={{
-        backgroundImage: `linear-gradient(
-          135deg, 
-          hsla(25, 15%, 85%, 0.9), 
-          hsla(30, 20%, 82%, 0.9)
-        ), url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundBlendMode: 'soft-light'
-      }}
     >
       <div className="p-4 sm:p-6 flex items-center justify-between relative z-10 h-full">
         <div className="flex-1 min-w-0">
@@ -48,9 +38,6 @@ const PoetryCard: React.FC<PoetryCardProps> = ({
           </span>
         </div>
       </div>
-      
-      {/* Enhanced overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-card/30 via-card/20 to-card/40 group-hover:from-card/20 group-hover:via-card/10 group-hover:to-card/30 transition-all duration-300" />
     </Card>
   );
 };
