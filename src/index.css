@@ -1,8 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import '@fontsource/dancing-script/400.css';
+@import '@fontsource/dancing-script/500.css';
+@import '@fontsource/dancing-script/600.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/crimson-text/400.css';
+@import '@fontsource/crimson-text/600.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Dancing Script', 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #2c3e50;
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: #ecf0f1;
+}
+
+.glass {
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 15px 45px 0 rgba(31,38,135,0.5);
+  transform: translateY(-2px);
+}
+
+body.dark .glass {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #ecf0f1;
+}
+
+body.dark .glass:hover {
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 15px 45px 0 rgba(0,0,0,0.3);
+}
+
+/* Enhanced glassmorphism for poetry blocks */
+.poetry-block {
+  background: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+  transition: all 0.3s ease;
+}
+
+.poetry-block:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(31,38,135,0.45);
+}
+
+body.dark .poetry-block {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+body.dark .poetry-block:hover {
+  background: rgba(0,0,0,0.4);
+}
 
 /* Poetry-inspired design system with literary aesthetics */
 

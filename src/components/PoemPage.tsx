@@ -38,29 +38,26 @@ const PoemPage = () => {
       <Navigation />
       
       <main className="pt-20 pb-12 px-4">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Back button */}
           <Button 
             variant="ghost" 
             onClick={() => navigate('/')}
-            className="mb-8 nav-button"
+            className="mb-8 nav-button flex items-center"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to all poems
+            <span style={{ fontFamily: "'Indie Flower', cursive" }}>Back to all poems</span>
           </Button>
 
-          {/* Poem card */}
-          <Card 
-            className="p-8 sm:p-12 animate-fade-in"
+          {/* Poem card with glassmorphism */}
+          <div 
+            className="glass rounded-2xl p-8 sm:p-12 animate-fade-in max-w-3xl mx-auto"
             style={{
-              backgroundImage: `linear-gradient(
-                135deg, 
-                hsla(42, 25%, 92%, 0.95), 
-                hsla(35, 20%, 88%, 0.95)
-              ), url(${backgroundImage})`,
+              backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15)), url(${backgroundImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundBlendMode: 'multiply'
+              backgroundBlendMode: 'overlay',
+              fontFamily: "'Indie Flower', cursive"
             }}
           >
             {/* Poem header */}
@@ -88,7 +85,7 @@ const PoemPage = () => {
                 </p>
               ))}
             </div>
-          </Card>
+          </div>
 
           {/* Create your own poetry page button */}
           <div className="text-center mt-12">

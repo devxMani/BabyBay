@@ -1,45 +1,73 @@
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { IoHome, IoSearch, IoLogIn, IoHelpCircle } from 'react-icons/io5';
+import { GiButterfly } from 'react-icons/gi';
 import ThemeToggle from './ThemeToggle';
-import { Home, HelpCircle, LogIn } from 'lucide-react';
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 p-4">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
-        {/* Logo/Butterfly */}
-        <div className="butterfly-icon">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-primary"
-          >
-            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
-            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
-            <path d="M15 13a2 2 0 0 1-3 0 2 2 0 0 1-3 0" />
-          </svg>
-        </div>
+        {/* Logo */}
+        <motion.div 
+          className="flex items-center cursor-pointer"
+          onClick={() => navigate('/')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <GiButterfly size={28} className="text-white mr-2" />
+        </motion.div>
 
         {/* Center Navigation */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="nav-button">
-            <Home size={18} />
-          </Button>
-          <Button variant="ghost" size="sm" className="nav-button">
-            <HelpCircle size={18} />
-          </Button>
+          <motion.button
+            onClick={() => navigate('/')}
+            className={`p-2 rounded-lg transition-colors duration-200 ${
+              location.pathname === '/' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <IoHome size={18} />
+          </motion.button>
+          
+          <motion.button
+            onClick={() => navigate('/explore')}
+            className={`p-2 rounded-lg transition-colors duration-200 ${
+              location.pathname === '/explore' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <IoSearch size={18} />
+          </motion.button>
+
+          <motion.button
+            className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <IoHelpCircle size={18} />
+          </motion.button>
+
           <ThemeToggle />
         </div>
 
         {/* Login */}
-        <Button variant="ghost" size="sm" className="nav-button">
-          <LogIn size={18} />
-        </Button>
+        <motion.button
+          onClick={() => navigate('/signin')}
+          className={`p-2 rounded-lg transition-colors duration-200 ${
+            location.pathname === '/signin' ? 'text-white bg-white/20' : 'text-white/70 hover:text-white hover:bg-white/10'
+          }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <IoLogIn size={18} />
+        </motion.button>
       </div>
     </nav>
   );
