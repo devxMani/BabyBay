@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				serif: ['Crimson Text', 'serif'],
+				sans: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -88,7 +92,25 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-up': 'slide-up 0.4s ease-out',
+				'flutter': 'flutter 0.6s ease-in-out'
+			},
+			keyframes: {
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'flutter': {
+					'0%, 100%': { transform: 'scale(1.1) rotate(0deg)' },
+					'25%': { transform: 'scale(1.15) rotate(-2deg)' },
+					'75%': { transform: 'scale(1.15) rotate(2deg)' }
+				}
 			}
 		}
 	},
